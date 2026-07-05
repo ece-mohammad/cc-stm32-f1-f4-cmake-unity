@@ -1,0 +1,16 @@
+include_guard(GLOBAL)
+
+cmake_minimum_required(VERSION 3.22)
+
+add_library(platform_interface INTERFACE)
+target_include_directories(platform_interface
+                           INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/../common/inc)
+
+add_library(platform OBJECT)
+
+target_sources(
+  platform
+  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/drivers/{{cookiecutter.project_name}}/{{cookiecutter.project_name}}.c
+          ${CMAKE_CURRENT_SOURCE_DIR}/drivers/platform/platform.c)
+
+target_link_libraries(platform PUBLIC {{cookiecutter.project_name}} platform_interface)

@@ -1,0 +1,213 @@
+{
+    "version": 8,
+    "include": [
+        "env.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "base",
+            "inherits": "env-vars",
+            "hidden": true,
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "WIN_GCC_TOOLCHAIN_PATH": "$env{WIN_GCC_TOOLCHAIN_PATH}",
+                "WIN_GCC_TOOLCHAIN_PREFIX": "$env{WIN_GCC_TOOLCHAIN_PREFIX}",
+                "LINUX_GCC_TOOLCHAIN_PATH": "$env{LINUX_GCC_TOOLCHAIN_PATH}",
+                "LINUX_GCC_TOOLCHAIN_PREFIX": "$env{LINUX_GCC_TOOLCHAIN_PREFIX}",
+                "ARM_GCC_TOOLCHAIN_PATH": "$env{ARM_GCC_TOOLCHAIN_PATH}",
+                "ARM_GCC_TOOLCHAIN_PREFIX": "$env{ARM_GCC_TOOLCHAIN_PREFIX}",
+                "TOOLCHAIN_SUFFIX": "$env{TOOLCHAIN_SUFFIX}"
+            }
+        },
+        {
+            "name": "linux-base",
+            "inherits": "base",
+            "hidden": true,
+            "displayName": "Linux Base",
+            "description": "Base linux configuration",
+            "toolchainFile": "${sourceDir}/platform/linux/cmake/gcc-gnu.cmake",
+            "binaryDir": "${sourceDir}/build/linux/${presetName}",
+            "cacheVariables": {
+                "TOOLCHAIN_SUFFIX": "",
+                "TARGET_PLATFORM": "linux"
+            }
+        },
+        {
+            "name": "linux-debug",
+            "inherits": "linux-base",
+            "displayName": "Linux Debug",
+            "description": "Host build with GCC, debug, runs natively",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "linux-release",
+            "inherits": "linux-base",
+            "displayName": "Linux Release",
+            "description": "Host build with GCC, release, runs natively",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "windows-base",
+            "inherits": "base",
+            "hidden": true,
+            "displayName": "Windows Base",
+            "description": "Base windows conmfiguration",
+            "toolchainFile": "${sourceDir}/platform/windows/cmake/gcc-mingw32.cmake",
+            "binaryDir": "${sourceDir}/build/windows/${presetName}",
+            "cacheVariables": {
+                "TARGET_PLATFORM": "windows"
+            }
+        },
+        {
+            "name": "windows-debug",
+            "inherits": "windows-base",
+            "displayName": "Windows Debug",
+            "description": "Host build with GCC, debug, runs natively",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "windows-release",
+            "inherits": "windows-base",
+            "displayName": "Windows Release",
+            "description": "Host build with GCC, release, runs natively",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "stm32f103-base",
+            "inherits": "base",
+            "displayName": "STM32F103 Base",
+            "hidden": true,
+            "description": "Base cross-compile for STM32F103 with ARM GCC configuration",
+            "toolchainFile": "${sourceDir}/platform/stm32f103xx/cmake/gcc-arm-none-eabi.cmake",
+            "binaryDir": "${sourceDir}/build/stm32f103xx/${presetName}",
+            "cacheVariables": {
+                "TARGET_PLATFORM": "stm32f103xx"
+            }
+        },
+        {
+            "name": "stm32f103-debug",
+            "inherits": "stm32f103-base",
+            "displayName": "STM32F103 Debug",
+            "description": "Cross-compile for STM32F103RET6 with ARM GCC, debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "stm32f103-release",
+            "inherits": "stm32f103-base",
+            "displayName": "STM32F103 Release",
+            "description": "Cross-compile for STM32F103RET6 with ARM GCC, release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "stm32f401-base",
+            "inherits": "base",
+            "displayName": "STM32F401 Base",
+            "hidden": true,
+            "description": "Base Cross-compile for STM32F401RET6 with ARM GCC configuration",
+            "toolchainFile": "${sourceDir}/platform/stm32f401xx/cmake/gcc-arm-none-eabi.cmake",
+            "binaryDir": "${sourceDir}/build/stm32f401xx/${presetName}",
+            "cacheVariables": {
+                "TARGET_PLATFORM": "stm32f401xx"
+            }
+        },
+        {
+            "name": "stm32f401-debug",
+            "inherits": "stm32f401-base",
+            "displayName": "STM32F401 Debug",
+            "description": "Cross-compile for STM32F401RET6 with ARM GCC, debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "stm32f401-release",
+            "inherits": "stm32f401-base",
+            "displayName": "STM32F401 Release",
+            "description": "Cross-compile for STM32F401RET6 with ARM GCC, release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "linux-debug",
+            "configurePreset": "linux-debug"
+        },
+        {
+            "name": "linux-release",
+            "configurePreset": "linux-release"
+        },
+        {
+            "name": "windows-debug",
+            "configurePreset": "windows-debug"
+        },
+        {
+            "name": "windows-release",
+            "configurePreset": "windows-release"
+        },
+        {
+            "name": "stm32f103-debug",
+            "configurePreset": "stm32f103-debug"
+        },
+        {
+            "name": "stm32f103-release",
+            "configurePreset": "stm32f103-release"
+        },
+        {
+            "name": "stm32f401-debug",
+            "configurePreset": "stm32f401-debug"
+        },
+        {
+            "name": "stm32f401-release",
+            "configurePreset": "stm32f401-release"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "linux-debug",
+            "configurePreset": "linux-debug",
+            "displayName": "Linux Debug Tests",
+            "output": {
+                "verbosity": "verbose"
+            }
+        },
+        {
+            "name": "linux-release",
+            "configurePreset": "linux-release",
+            "displayName": "Linux Release Tests",
+            "output": {
+                "verbosity": "verbose"
+            }
+        },
+        {
+            "name": "windows-debug",
+            "configurePreset": "windows-debug",
+            "displayName": "Windows Debug Tests",
+            "output": {
+                "verbosity": "verbose"
+            }
+        },
+        {
+            "name": "windows-release",
+            "configurePreset": "windows-release",
+            "displayName": "Windows Release Tests",
+            "output": {
+                "verbosity": "verbose"
+            }
+        }
+    ]
+}
