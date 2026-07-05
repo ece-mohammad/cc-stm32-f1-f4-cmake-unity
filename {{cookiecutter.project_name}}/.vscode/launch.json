@@ -1,0 +1,49 @@
+{
+      {
+      "name": "STM32F103 - attach",
+      "request": "attach",
+      "cwd": "${workspaceRoot}",
+      "executable": "${command:cmake.launchTargetPath}",
+      "type": "cortex-debug",
+      "toolchainPrefix": "arm-none-eabi",
+      "armToolchainPath": "",
+      "stm32cubeprogrammer": "STM32_Programmer_CLI",
+      "serverpath": "openocd",
+      "servertype": "openocd",
+      "configFiles": [
+        "interface/stlink.cfg",
+        "C:\\Users\\Alsayad Electronics\\AppData\\Local\\Arduino15\\packages\\STMicroelectronics\\hardware\\stm32\\2.12.0\\debugger\\select_dapdirect.cfg",
+        "target/stm32f1x.cfg"
+      ],
+      "breakAfterReset": true,
+      "runToEntryPoint": "main",
+      "showDevDebugOutput": "none",
+      "symbolFiles": [
+        "${command:cmake.launchTargetPath}"
+      ]
+    },
+    {
+      "name": "STM32F401 - attach",
+      "request": "attach",
+      "cwd": "${workspaceRoot}",
+      "executable": "${command:cmake.launchTargetPath}",
+      "type": "cortex-debug",
+      "toolchainPrefix": "arm-none-eabi",
+      "armToolchainPath": "",
+      "stm32cubeprogrammer": "STM32_Programmer_CLI",
+      "serverpath": "openocd",
+      "servertype": "openocd",
+      "configFiles": [
+        "interface/stlink.cfg",
+        "C:\\Users\\Alsayad Electronics\\AppData\\Local\\Arduino15\\packages\\STMicroelectronics\\hardware\\stm32\\2.12.0\\debugger\\select_dapdirect.cfg",
+        "target/stm32f4x.cfg"
+      ],
+      "breakAfterReset": true,
+      "runToEntryPoint": "main",
+      "showDevDebugOutput": "none",
+      "symbolFiles": [
+        "${command:cmake.launchTargetPath}"
+      ]
+    }
+  ]
+}
