@@ -9,7 +9,7 @@ option(UNITY_EXTENSION_FIXTURE "Enable unity fixtures" ON)
 add_subdirectory(common/unity unity)
 
 # Test executable ---------------------------------------
-set(EXECUTABLE_NAME {{cookiecutter.project_name}}Test)
+set(EXECUTABLE_NAME test_{{cookiecutter.project_name}})
 add_executable(${EXECUTABLE_NAME})
 
 set(TEST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/test_{{cookiecutter.project_name}}.c ${CMAKE_CURRENT_SOURCE_DIR}/src/main.c)
