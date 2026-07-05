@@ -1,10 +1,9 @@
 /*****************************************************************************
  * @file      {{cookiecutter.project_name}}_interface.h
  * @brief     {{cookiecutter.project_name}} module interface header file
- * @date      2026-07-01
+ * @date      {{cookiecutter.date}}
  * @version   {{cookiecutter.project_version}}
  * @author    {{cookiecutter.author}}
- * @license   MIT
  *****************************************************************************/
 
 #ifndef {{cookiecutter.project_name|upper}}_INTERFACE_H_
