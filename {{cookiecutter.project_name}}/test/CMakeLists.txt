@@ -9,12 +9,12 @@ option(UNITY_EXTENSION_FIXTURE "Enable unity fixtures" ON)
 add_subdirectory(common/unity unity)
 
 # Test executable ---------------------------------------
-set(EXECUTABLE_NAME foo_barTest)
+set(EXECUTABLE_NAME {{cookiecutter.project_name}}Test)
 add_executable(${EXECUTABLE_NAME})
 
-set(TEST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/test_foo_bar.c ${CMAKE_CURRENT_SOURCE_DIR}/src/main.c)
+set(TEST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/test_{{cookiecutter.project_name}}.c ${CMAKE_CURRENT_SOURCE_DIR}/src/main.c)
 set(TEST_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/inc)
-set(TEST_LINK_LIBS unity::framework foo_bar platform_interface)
+set(TEST_LINK_LIBS unity::framework {{cookiecutter.project_name}} platform_interface)
 
 if(TARGET_PLATFORM STREQUAL "stm32f103xx")
   list(APPEND TEST_SOURCES $<TARGET_OBJECTS:STM32_Drivers>)
@@ -32,5 +32,5 @@ target_link_libraries(${EXECUTABLE_NAME} PUBLIC ${TEST_LINK_LIBS})
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/stm32_utils.cmake)
 
-add_test(NAME test_foo_bar COMMAND test_foo_bar)
+add_test(NAME test_{{cookiecutter.project_name}} COMMAND test_{{cookiecutter.project_name}})
 
