@@ -1,5 +1,6 @@
 #include <unity.h>
 #include <unity_fixture.h>
+#include <platform.h>
 
 
 void RunAllTests(void) {
@@ -12,5 +13,6 @@ int main(void) {
     "test_{{cookiecutter.project_name}}",
     "-v"
   };
+  platform_init();
   return UnityMain(sizeof(argv)/sizeof(argv[0]), argv, RunAllTests);
 }
