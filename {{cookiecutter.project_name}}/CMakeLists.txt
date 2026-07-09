@@ -7,9 +7,10 @@ project(
   HOMEPAGE_URL "{{cookiecutter.project_url}}"
   LANGUAGES C CXX ASM)
 
-configure_file("${CMAKE_CURRENT_SOURCE_DIR}/VERSION.in"
+if(NOT BUILD_STATIC_LIBRARY)
+  configure_file("${CMAKE_CURRENT_SOURCE_DIR}/VERSION.in"
                "${CMAKE_CURRENT_SOURCE_DIR}/VERSION")
-
+endif(NOT BUILD_sTATIC_LIBRARY)
 
 
 find_program(CCACHE_PROGRAM ccache)
@@ -31,7 +32,7 @@ message(STATUS "Building for platofrm: ${TARGET_PLATFORM}")
 
 add_subdirectory({{cookiecutter.project_name}})
 
-if(NOT BUID_STATIC_LIBRARY)
+if(NOT BUILD_STATIC_LIBRARY)
   add_subdirectory(platform)
   add_subdirectory(middleware)
   add_subdirectory(examples)
