@@ -1,6 +1,6 @@
 /*****************************************************************************
  * @file      {{cookiecutter.project_name}}.h
- * @brief     {{cookiecutter.project_name}} module header file
+ * @brief     {{cookiecutter.project_name}} module header file {{cookiecutter.project_description}}
  * @date      {{cookiecutter.date}}
  * @version   {{cookiecutter.project_version}}
  * @author    {{cookiecutter.author}}

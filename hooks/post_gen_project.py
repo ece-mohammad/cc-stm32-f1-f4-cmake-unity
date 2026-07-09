@@ -6,9 +6,6 @@ import subprocess
 
 
 def git_init_repo():
-    git_init_local: bool = bool("{{ cookiecutter.git_init_local }}")
-    if not git_init_local:
-        return
     try:
         subprocess.run(
             ["git", "init"],
